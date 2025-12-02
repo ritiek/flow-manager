@@ -1,0 +1,57 @@
+{
+  "flow": {
+    "id": "flow123",
+    "name": "Data processing flow",
+    "start_task": "task1",
+    "tasks": [
+      {
+        "name": "task1",
+        "description": "Fetch data"
+      },
+      {
+        "name": "task2",
+        "description": "Process data"
+      },
+      {
+        "name": "fail1",
+        "description": "Fail intentionally"
+      },
+      {
+        "name": "task3",
+        "description": "Store data"
+      }
+    ],
+    "conditions": [
+      {
+        "name": "condition_task1_result",
+        "description": "Evaluate the result of task1. If successful, proceed to task2; otherwise, end the flow.",
+        "source_task": "task1",
+        "outcome": "success",
+        "target_task_success": "task2",
+        "target_task_failure": "end"
+      },
+      {
+        "name": "condition_task2_result",
+        "description": "Evaluate the result of task2. If successful, proceed to fail1; otherwise, end the flow.",
+        "source_task": "task2",
+        "outcome": "success",
+        "target_task_success": "fail1",
+        "target_task_failure": "end"
+      },
+      {
+        "name": "condition_fail1_result",
+        "description": "Evaluate the result of fail1. If successful, proceed to task3; otherwise, end the flow.",
+        "source_task": "fail1",
+        "outcome": "success",
+        "target_task_success": "task3",
+        "target_task_failure": "end"
+      },
+      {
+        "name": "final_task3",
+        "description": "Executes task3.",
+        "source_task": "task3",
+        "outcome": "success"
+      }
+    ]
+  }
+}

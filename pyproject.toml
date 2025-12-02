@@ -1,0 +1,8 @@
+[project]
+name = "flow-manager"
+version = "0.1.0"
+description = "A minimal flow manager microservice"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0.0",
+]
